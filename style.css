@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0a0a0a;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: #1a1a1a;
+  position: sticky;
+  top: 0;
+}
+
+.nav-links a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.section {
+  padding: 60px 20px;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 5px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: #B444FF;
+  color: white;
+}
+
+.btn-outline {
+  border: 2px solid #B444FF;
+  color: #B444FF;
+  background: none;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.accounts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.account-card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+  width: 200px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.account-card:hover {
+  transform: scale(1.05);
+}
+
+.account-card .avatar {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.status {
+  display: block;
+  margin: 5px 0;
+}
+
+.gold { border: 2px solid #FFD700; }
+.ultimate { border: 2px solid #B444FF; }
+.silver { border: 2px solid #C0C0C0; }
+.bronze { border: 2px solid #CD7F32; }
+
+.benefits-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.benefit-card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+  width: 250px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.benefit-card:hover {
+  transform: scale(1.05);
+}
+
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.contact-card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+  width: 250px;
+  text-align: center;
+}
