@@ -3,63 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RentMyWaifu</title>
+<title>RentMyWaifu VАУ</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-body { background: #0f111a; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
+body, html { margin:0; padding:0; overflow: hidden; font-family: 'Roboto', sans-serif; background: #0f111a; color: #fff; }
+section { width:100vw; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:50px; transition: transform 0.8s ease; }
+h1 { font-size:3rem; margin-bottom:20px; }
+p { font-size:1.2rem; max-width:700px; line-height:1.6; }
+button { padding:15px 30px; font-size:18px; border:none; border-radius:10px; cursor:pointer; background:#ff4081; color:#fff; font-weight:700; transition:0.3s; }
+button:hover { background:#e73370; transform:scale(1.05); }
 
-/* Header */
-header { display: flex; justify-content: center; padding: 20px; background: #11131f; position: sticky; top: 0; z-index: 10; }
-header nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: 700; transition: 0.3s; }
-header nav a:hover { color: #ff4081; }
-
-/* Section full screen */
-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 50px; transition: 0.6s; }
-h1, h2 { margin-bottom: 30px; font-size: 3rem; }
-p { max-width: 700px; margin-bottom: 25px; line-height: 1.6; font-size: 1.2rem; }
-
-.slide { opacity: 0; transform: translateY(50px); transition: all 0.6s ease-out; }
-.slide.active { opacity: 1; transform: translateY(0); }
-
-/* Форма поддержки */
-form { display: flex; flex-direction: column; max-width: 500px; width: 90%; }
-input, textarea, button { margin-bottom: 20px; padding: 15px; border-radius: 10px; border: none; font-size: 18px; }
-input, textarea { background: #1c1f30; color: #fff; }
-textarea { resize: none; }
-button { background: #ff4081; color: #fff; cursor: pointer; font-weight: 700; transition: 0.3s; }
-button:hover { background: #e73370; transform: scale(1.05); }
-
-/* Статусы */
-.statuses-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; width: 100%; margin-top: 30px; }
-.status-card {
-  background: linear-gradient(135deg, #1c1f30, #2a2d42);
-  padding: 30px 20px; border-radius: 18px; box-shadow: 0 12px 30px rgba(0,0,0,0.7);
-  transition: transform 0.5s, box-shadow 0.5s;
-}
-.status-card:hover { transform: translateY(-12px); box-shadow: 0 25px 40px rgba(0,0,0,0.9); }
-.status-title { font-size: 2rem; font-weight: 700; margin-bottom: 15px; }
-.status-desc { font-size: 1.1rem; color: #ccc; line-height: 1.6; }
+/* Контейнеры карточек */
+.cards-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:30px; width:100%; margin-top:30px; }
+.card { background: linear-gradient(135deg,#1c1f30,#2a2d42); padding:30px 20px; border-radius:18px; opacity:0; transform: translateY(50px); box-shadow:0 10px 25px rgba(0,0,0,0.6); transition: all 0.6s ease-out; }
+.card.active { opacity:1; transform:translateY(0); }
+.card:hover { transform:translateY(-10px); box-shadow:0 20px 35px rgba(0,0,0,0.8); }
 
 /* Градиенты под статусы */
-.bronze { background: linear-gradient(90deg, #cd7f32, #b87333); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.silver { background: linear-gradient(90deg, #c0c0c0, #e5e4e2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.gold { background: linear-gradient(90deg, #ffd700, #ffbf00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.ultimate { background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.bronze { background: linear-gradient(90deg,#cd7f32,#b87333); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.silver { background: linear-gradient(90deg,#c0c0c0,#e5e4e2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.gold { background: linear-gradient(90deg,#ffd700,#ffbf00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.ultimate { background: linear-gradient(90deg,red,orange,yellow,green,blue,indigo,violet); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-/* Гаранты и Абсолютное превосходство */
-.guarantees, .features { max-width: 800px; margin-top: 30px; }
-.guarantee-card, .feature-card {
-  background: linear-gradient(135deg, #1c1f30, #2a2d42);
-  padding: 25px 20px; border-radius: 18px; margin-bottom: 25px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-  transition: transform 0.5s, box-shadow 0.5s;
-}
-.guarantee-card:hover, .feature-card:hover { transform: translateY(-12px); box-shadow: 0 20px 35px rgba(0,0,0,0.8); }
-.card-title { font-size: 2rem; font-weight: 700; margin-bottom: 15px; background: linear-gradient(90deg, #ffb347, #ff4081); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.card-desc { font-size: 1.1rem; color: #ccc; line-height: 1.6; }
-.time-note { color: #aaa; font-size: 0.9rem; margin-top: 5px; font-style: italic; }
+/* Разделы */
+#support { background:#11131f; }
+#faq { background:#141726; }
+#links { background:#181c30; }
+#features { background:#1c2033; }
+#statuses { background:#1f2440; }
 
+/* Навигация */
+header { position:fixed; top:0; width:100%; display:flex; justify-content:center; padding:20px; background:rgba(17,19,31,0.9); z-index:10; }
+header nav a { color:#fff; margin:0 15px; font-weight:700; text-decoration:none; transition:0.3s; }
+header nav a:hover { color:#ff4081; }
 </style>
 </head>
 <body>
@@ -74,90 +50,90 @@ button:hover { background: #e73370; transform: scale(1.05); }
 </nav>
 </header>
 
-<!-- Поддержка -->
-<section id="support" class="slide">
+<section id="support">
 <h1>Форма поддержки</h1>
-<p>Используйте эту форму для связи с нашей Технической поддержкой. Укажите ваш email и подробно опишите вопрос.</p>
-<form>
-<input type="email" placeholder="Ваш Email" required>
-<textarea placeholder="Ваш вопрос (только Тех. поддержка)" rows="6" required></textarea>
+<p>Используйте форму для связи с нашей Тех. поддержкой. Укажите ваш email и подробно опишите вопрос.</p>
+<form style="display:flex; flex-direction:column; width:90%; max-width:500px;">
+<input type="email" placeholder="Ваш Email" required style="margin-bottom:20px;padding:15px;border-radius:10px;border:none;font-size:18px;background:#1c1f30;color:#fff;">
+<textarea placeholder="Ваш вопрос (только Тех. поддержка)" rows="6" required style="margin-bottom:20px;padding:15px;border-radius:10px;border:none;font-size:18px;background:#1c1f30;color:#fff;resize:none;"></textarea>
 <button type="submit">Отправить</button>
 </form>
 </section>
 
-<!-- FAQ -->
-<section id="faq" class="slide">
+<section id="faq">
 <h1>FAQ</h1>
-<div class="faq">
-<p>Пока пусто. Скоро здесь появятся часто задаваемые вопросы, чтобы вы могли быстро получить ответы.</p>
-</div>
+<p>Пока пусто. Скоро появятся ответы на самые часто задаваемые вопросы, чтобы вы могли быстро ориентироваться в сервисе.</p>
 </section>
 
-<!-- Гаранты -->
-<section id="links" class="slide">
+<section id="links">
 <h1>Гаранты</h1>
-<div class="guarantees">
-<div class="guarantee-card">
-<div class="card-title">FunPay (рекомендовано)</div>
-<div class="card-desc">Надежный гарант для безопасных сделок. Рекомендуем использовать для быстрых расчетов.</div>
+<div class="cards-container">
+<div class="card"> 
+<h2>FunPay (рекомендовано)</h2>
+<p>Надежный гарант для безопасных сделок. Рекомендуем использовать для быстрых расчетов.</p>
 </div>
-<div class="guarantee-card">
-<div class="card-title">Playerok</div>
-<div class="card-desc">Гарант с возможными задержками. Время ответа может быть дольше.</div>
-<div class="time-note">Время ответа может быть дольше</div>
+<div class="card"> 
+<h2>Playerok</h2>
+<p>Гарант с возможными задержками. Время ответа может быть дольше.</p>
 </div>
 </div>
 </section>
 
-<!-- Абсолютное превосходство -->
-<section id="features" class="slide">
+<section id="features">
 <h1>Абсолютное превосходство</h1>
-<div class="features">
-<div class="feature-card">
-<div class="card-title">Супер функции 1</div>
-<div class="card-desc">Все возможности нашего сервиса в одном месте: быстрый доступ, удобный интерфейс, актуальные статусы.</div>
+<div class="cards-container">
+<div class="card">
+<h2>Супер функции 1</h2>
+<p>Все возможности нашего сервиса в одном месте: быстрый доступ, удобный интерфейс, актуальные статусы.</p>
 </div>
-<div class="feature-card">
-<div class="card-title">Супер функции 2</div>
-<div class="card-desc">Дополнительные бонусы для наших пользователей: красивые аватарки, эксклюзивный контент и многое другое.</div>
+<div class="card">
+<h2>Супер функции 2</h2>
+<p>Дополнительные бонусы: красивые аватарки, эксклюзивный контент и многое другое.</p>
 </div>
 </div>
 </section>
 
-<!-- Статусы -->
-<section id="statuses" class="slide">
+<section id="statuses">
 <h1>Статусы</h1>
-<div class="statuses-container">
-<div class="status-card">
-<div class="status-title bronze">Bronze</div>
-<div class="status-desc">Описание Bronze...</div>
-</div>
-<div class="status-card">
-<div class="status-title silver">Silver</div>
-<div class="status-desc">Описание Silver...</div>
-</div>
-<div class="status-card">
-<div class="status-title gold">Gold</div>
-<div class="status-desc">Описание Gold...</div>
-</div>
-<div class="status-card">
-<div class="status-title ultimate">Ultimate</div>
-<div class="status-desc">Описание Ultimate...</div>
-</div>
+<div class="cards-container">
+<div class="card"><div class="status-title bronze">Bronze</div><p>Описание Bronze...</p></div>
+<div class="card"><div class="status-title silver">Silver</div><p>Описание Silver...</p></div>
+<div class="card"><div class="status-title gold">Gold</div><p>Описание Gold...</p></div>
+<div class="card"><div class="status-title ultimate">Ultimate</div><p>Описание Ultimate...</p></div>
 </div>
 </section>
 
 <script>
-const slides = document.querySelectorAll('.slide');
-window.addEventListener('scroll', () => {
-  const triggerBottom = window.innerHeight / 5 * 4;
-  slides.forEach(slide => {
-    const slideTop = slide.getBoundingClientRect().top;
-    if(slideTop < triggerBottom){
-      slide.classList.add('active');
-    }
-  });
+// Слайдер full-screen
+let currentSection = 0;
+const sections = document.querySelectorAll('section');
+let scrolling = false;
+
+function scrollToSection(index) {
+  if(index < 0 || index >= sections.length) return;
+  scrolling = true;
+  sections[index].scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{ scrolling=false; }, 1000);
+  currentSection = index;
+}
+
+// Скролл колесом мыши
+window.addEventListener('wheel', (e)=>{
+  if(scrolling) return;
+  if(e.deltaY>0){ scrollToSection(currentSection+1); }
+  else{ scrollToSection(currentSection-1); }
 });
+
+// Появление карточек по очереди
+function revealCards(section){
+  const cards = section.querySelectorAll('.card');
+  cards.forEach((card, i)=>{
+    setTimeout(()=>{ card.classList.add('active'); }, i*300);
+  });
+}
+
+// При загрузке и скролле
+sections.forEach(section => revealCards(section));
 </script>
 
 </body>
