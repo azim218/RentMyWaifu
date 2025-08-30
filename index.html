@@ -1,104 +1,163 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎮 RentMyWaifu</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RentMyWaifu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+    body { background: #0f111a; color: #fff; overflow-x: hidden; }
+
+    header { display: flex; justify-content: center; padding: 20px; background: #11131f; position: sticky; top: 0; z-index: 10; }
+    header nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: 700; transition: 0.3s; }
+    header nav a:hover { color: #ff4081; }
+
+    section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 50px; transition: 0.6s; }
+
+    h1, h2 { margin-bottom: 20px; }
+    p { max-width: 600px; margin-bottom: 20px; line-height: 1.5; }
+
+    .slide { opacity: 0; transform: translateY(50px); transition: all 0.6s ease-out; }
+    .slide.active { opacity: 1; transform: translateY(0); }
+
+    form { display: flex; flex-direction: column; max-width: 400px; width: 100%; }
+    input, textarea, button { margin-bottom: 15px; padding: 12px; border-radius: 8px; border: none; }
+    input, textarea { background: #1c1f30; color: #fff; font-size: 16px; }
+    button { background: #ff4081; color: #fff; cursor: pointer; font-weight: 700; font-size: 16px; transition: 0.3s; }
+    button:hover { background: #e73370; transform: scale(1.05); }
+
+    .faq, .links, .features, .statuses { display: flex; flex-direction: column; gap: 15px; max-width: 800px; }
+
+    .links a { color: #ff4081; text-decoration: none; font-weight: 700; transition: 0.3s; }
+    .links a:hover { text-decoration: underline; }
+
+    .status-card {
+      background: linear-gradient(135deg, #1c1f30, #2a2d42);
+      padding: 25px 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      transition: transform 0.4s, box-shadow 0.4s;
+      text-align: center;
+    }
+    .status-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.8);
+    }
+    .status-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #ffb347, #ff4081);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .status-desc {
+      font-size: 16px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .statuses-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-  <!-- Навигация -->
-  <nav class="navbar">
-    <div class="logo">🎮 RentMyWaifu</div>
-    <div class="nav-links">
-      <a href="#home">Главная</a>
-      <a href="#accounts">Аккаунты</a>
-      <a href="#superiority">Превосходство</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contacts">Контакты</a>
-    </div>
+
+<header>
+  <nav>
+    <a href="#support">Поддержка</a>
+    <a href="#faq">FAQ</a>
+    <a href="#links">Гаранты</a>
+    <a href="#features">Абсолютное превосходство</a>
+    <a href="#statuses">Статусы</a>
   </nav>
+</header>
 
-  <!-- Главная -->
-  <section id="home" class="hero-section">
-    <h1>🎮 RentMyWaifu</h1>
-    <p>Премиум аккаунты для игр</p>
-    <div class="hero-buttons">
-      <a href="#accounts" class="btn btn-primary">Начать сейчас</a>
-      <a href="#superiority" class="btn btn-outline">Узнать больше</a>
-    </div>
-  </section>
+<!-- Поддержка -->
+<section id="support" class="slide">
+  <h1>Форма поддержки</h1>
+  <form>
+    <input type="email" placeholder="Ваш Email" required>
+    <textarea placeholder="Ваш вопрос (только Тех. поддержка)" rows="5" required></textarea>
+    <button type="submit">Отправить</button>
+  </form>
+</section>
 
-  <!-- Аккаунты (Статические демо) -->
-  <section id="accounts" class="section">
-    <h2>🎮 Доступные аккаунты</h2>
-    <div class="accounts-grid">
-      <div class="account-card gold">
-        <div class="avatar">⚡</div>
-        <h3>GenshinPro</h3>
-        <span class="status">Gold</span>
-        <span class="points">Баллы: 500</span>
-      </div>
-      <div class="account-card ultimate">
-        <div class="avatar">🎯</div>
-        <h3>ValorantMaster</h3>
-        <span class="status">Ultimate</span>
-        <span class="points">Баллы: 1000</span>
-      </div>
-      <!-- Добавь остальные аккаунты -->
-    </div>
-  </section>
+<!-- FAQ -->
+<section id="faq" class="slide">
+  <h1>FAQ</h1>
+  <div class="faq">
+    <p>Пока пусто. Скоро здесь появятся часто задаваемые вопросы.</p>
+  </div>
+</section>
 
-  <!-- Абсолютное превосходство -->
-  <section id="superiority" class="section">
-    <h2>⚡ Абсолютное превосходство</h2>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="icon">🚀</div>
-        <h3>Мгновенный доступ</h3>
-        <p>Получите доступ к аккаунту сразу после оплаты</p>
-      </div>
-      <div class="benefit-card">
-        <div class="icon">💎</div>
-        <h3>Премиум качество</h3>
-        <p>Только проверенные аккаунты высшего уровня</p>
-      </div>
-      <!-- Остальные карточки -->
-    </div>
-  </section>
+<!-- Гаранты -->
+<section id="links" class="slide">
+  <h1>Гаранты</h1>
+  <div class="links">
+    <a href="#">Гарант 1</a>
+    <a href="#">Гарант 2</a>
+    <a href="#">Гарант 3</a>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section id="faq" class="section">
-    <h2>❓ Часто задаваемые вопросы</h2>
-    <div class="faq-item">
-      <h3>Статусы аккаунтов</h3>
-      <p>Bronze, Silver, Gold, Ultimate – разный уровень привилегий и бонусов.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Баллы</h3>
-      <p>Баллы начисляются за активность и покупки, влияют на статус аккаунта.</p>
-    </div>
-  </section>
+<!-- Абсолютное превосходство -->
+<section id="features" class="slide">
+  <h1>Абсолютное превосходство</h1>
+  <div class="features">
+    <p>Все функции и бонусы нашего сервиса для потребителей:</p>
+    <ul>
+      <li>Быстрый доступ к аккаунтам</li>
+      <li>Удобный интерфейс</li>
+      <li>Актуальные статусы аккаунтов</li>
+      <li>Красивые аватарки</li>
+      <li>И многое другое...</li>
+    </ul>
+  </div>
+</section>
 
-  <!-- Контакты / Гаранты -->
-  <section id="contacts" class="section">
-    <h2>🛡️ Контакты и Гаранты</h2>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <h3>Email</h3>
-        <p>support@rentmywaifu.com</p>
-      </div>
-      <div class="contact-card">
-        <h3>Discord</h3>
-        <p><a href="https://discord.gg/example">Наш сервер</a></p>
-      </div>
-      <div class="contact-card">
-        <h3>Оплата:</h3>
-        <p>@guarantor1, @guarantor2, @guarantor3</p>
-      </div>
+<!-- Статусы -->
+<section id="statuses" class="slide">
+  <h1>Статусы</h1>
+  <div class="statuses-container">
+    <div class="status-card">
+      <div class="status-title">Bronze</div>
+      <div class="status-desc">Описание Bronze...</div>
     </div>
-  </section>
+    <div class="status-card">
+      <div class="status-title">Silver</div>
+      <div class="status-desc">Описание Silver...</div>
+    </div>
+    <div class="status-card">
+      <div class="status-title">Gold</div>
+      <div class="status-desc">Описание Gold...</div>
+    </div>
+    <div class="status-card">
+      <div class="status-title">Ultimate</div>
+      <div class="status-desc">Описание Ultimate...</div>
+    </div>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<script>
+  // Анимация слайдов при скролле
+  const slides = document.querySelectorAll('.slide');
+  window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight / 5 * 4;
+    slides.forEach(slide => {
+      const slideTop = slide.getBoundingClientRect().top;
+      if(slideTop < triggerBottom){
+        slide.classList.add('active');
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
