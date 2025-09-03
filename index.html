@@ -57,34 +57,63 @@
                     Исключения: "Я долго не отвечаю в чате ЛС" - можно писать сюда.
                 </p>
                 
-                <form id="supportForm" action="https://formsubmit.co/RentMyWaifu@outlook.com" method="POST">
-                    <input type="hidden" name="_next" value="https://azim218.github.io/RentMyWaifu">
-                    <input type="hidden" name="_captcha" value="false">
-                    
-                    <div class="form-group">
-                        <label class="form-label">Контактный Email *</label>
-                        <input type="email" class="form-input" name="email" placeholder="your@email.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Тип проблемы</label>
-                        <select class="form-input" name="type">
-                            <option>Технические проблемы</option>
-                            <option>Проблемы с аккаунтом</option>
-                            <option>Долго не отвечаю в ЛС</option>
-                            <option>Другое</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Описание проблемы *</label>
-                        <textarea class="form-textarea" name="message" placeholder="Подробно опишите вашу проблему..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Отправить запрос</button>
-                </form>
-            </div>
-        </div>
+                <form id="supportForm" action="https://formsubmit.co/myemail@gmail.com" method="POST">
+    <input type="hidden" name="_next" value="https://azim218.github.io/">
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- ваши поля формы -->
+    <div class="form-group">
+        <label class="form-label">Контактный Email *</label>
+        <input type="email" class="form-input" name="email" placeholder="your@email.com" required>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Тип проблемы</label>
+        <select class="form-input" name="problem_type">
+            <option>Технические проблемы</option>
+            <option>Проблемы с аккаунтом</option>
+            <option>Долго не отвечаю в ЛС</option>
+            <option>Другое</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Описание проблемы *</label>
+        <textarea class="form-textarea" name="message" placeholder="Подробно опишите вашу проблему..." required></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">Отправить запрос</button>
+</form>
+
+<script>
+document.getElementById('supportForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // останавливаем стандартное поведение формы
+    
+    const form = e.target;
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Отправляется...';
+    submitBtn.disabled = true;
+
+    // Отправка формы через fetch
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        if (response.ok) {
+            // Показать сообщение благодарности
+            alert('Спасибо! Мы скоро с вами свяжемся. Примерное время: 30-240 минут.');
+            form.reset();
+        } else {
+            alert('Ошибка отправки. Попробуйте позже.');
+        }
+    }).catch(error => {
+        alert('Ошибка отправки. Попробуйте позже.');
+    }).finally(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
+});
+</script>
 
         <!-- ==== Остальные секции (FAQ, Guarantors, Features, Accounts) оставлены без изменений ==== -->
 
